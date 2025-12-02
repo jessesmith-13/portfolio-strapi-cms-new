@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_elements_nav_links",
+  "info": {
+    "displayName": "nav-link"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "href": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer"
+    }
+  },
+  "config": {}
+}

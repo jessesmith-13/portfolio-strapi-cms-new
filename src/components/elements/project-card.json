@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_elements_project_cards",
+  "info": {
+    "displayName": "projectCard"
+  },
+  "options": {},
+  "attributes": {
+    "projectName": {
+      "type": "string"
+    },
+    "projectDescription": {
+      "type": "text"
+    },
+    "technologies": {
+      "type": "component",
+      "component": "elements.technology",
+      "repeatable": true
+    },
+    "githubLink": {
+      "type": "component",
+      "component": "elements.project-link",
+      "repeatable": false
+    },
+    "projectImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "files",
+        "images"
+      ]
+    },
+    "projectLink": {
+      "type": "component",
+      "component": "elements.project-link",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

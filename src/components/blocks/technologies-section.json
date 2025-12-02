@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_blocks_technologies_sections",
+  "info": {
+    "displayName": "Technologies Section"
+  },
+  "options": {},
+  "attributes": {
+    "technologyCards": {
+      "type": "component",
+      "component": "elements.technology-card",
+      "repeatable": true
+    },
+    "heading": {
+      "type": "string"
+    },
+    "subheading": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

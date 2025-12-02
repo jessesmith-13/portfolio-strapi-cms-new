@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_elements_subtexts",
+  "info": {
+    "displayName": "subtext"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

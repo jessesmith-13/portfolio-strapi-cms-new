@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_blocks_projects_sections",
+  "info": {
+    "displayName": "Projects Section"
+  },
+  "options": {},
+  "attributes": {
+    "projectCards": {
+      "type": "component",
+      "component": "elements.project-card",
+      "repeatable": true
+    },
+    "heading": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

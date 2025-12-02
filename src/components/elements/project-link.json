@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_elements_project_links",
+  "info": {
+    "displayName": "projectLink"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "string"
+    },
+    "href": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

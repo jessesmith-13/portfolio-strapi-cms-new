@@ -2,10 +2,16 @@ export default [
   'strapi::logger',
   'strapi::errors',
   {
-    name: 'strapi::cors',
+    name: "strapi::cors",
     config: {
-      origin: '*',
-      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+      origin: [
+        "http://localhost:3000",
+        "https://portfolio-site-redesign-qwc5qtu4y-jesses-projects-98ea59e3.vercel.app/",
+        "https://www.jessesmith.tech",
+        "https://jessesmith.tech"
+      ],
+      methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+      headers: "*",
     },
   },
   'strapi::security',

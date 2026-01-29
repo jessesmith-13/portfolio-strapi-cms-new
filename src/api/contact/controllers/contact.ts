@@ -1,5 +1,5 @@
 import { factories } from '@strapi/strapi';
-import nodemailer from "nodemailer";
+import { Resend } from 'resend';
 
 export default factories.createCoreController('api::contact.contact', ({ strapi }) => ({
 
@@ -15,33 +15,32 @@ export default factories.createCoreController('api::contact.contact', ({ strapi 
         return ctx.badRequest('Missing required fields.');
       }
 
-      const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: parseInt(process.env.SMTP_PORT || "587"),
-        secure: false,
-        auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS,
-        },
-      });
+      // Initialize Resend
+      const resend = new Resend(process.env.RESEND_API_KEY);
 
-      const info = await transporter.sendMail({
-        from: process.env.EMAIL_FROM,
-        to: process.env.CONTACT_TO_EMAIL,
-        subject: `New Message from ${name}`,
+      // Send email via Resend
+      const { data, error } = await resend.emails.send({
+        from: process.env.EMAIL_DEFAULT_FROM || 'noreply@yourdomain.com',
+        to: process.env.EMAIL_TO?.split(',') || ['default@example.com'],
+        replyTo: email, // User's email for easy replies
+        subject: `New Contact Message from ${name}`,
         text: `
-          Name: ${name}
-          Email: ${email}
-          Message: ${message}
+Name: ${name}
+Email: ${email}
+
+Message:
+${message}
         `,
       });
 
-      // v5 email service
-      console.log("✅ Email sent:", info.messageId);
-      const preview = nodemailer.getTestMessageUrl(info);
-      if (preview) console.log("Preview URL:", preview);
+      if (error) {
+        console.error('❌ Resend error:', error);
+        return ctx.internalServerError('Email failed to send.');
+      }
 
-      ctx.body = { success: true, message: "Quote request sent successfully." };
+      console.log("✅ Email sent via Resend:", data?.id);
+      
+      ctx.body = { success: true, message: "Contact message sent successfully." };
     } catch (err) {
       console.error('SEND EMAIL ERROR', err);
       return ctx.internalServerError('Email failed to send.');

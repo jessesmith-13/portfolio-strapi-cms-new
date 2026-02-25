@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_elements_focusitems",
+  "info": {
+    "displayName": "focusitem"
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "text"
+    },
+    "title": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

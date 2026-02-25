@@ -668,6 +668,7 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
         'blocks.technologies-section',
         'blocks.projects-section',
         'blocks.hero-section',
+        'blocks.testimonials-section',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;

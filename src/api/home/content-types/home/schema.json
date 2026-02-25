@@ -21,7 +21,8 @@
         "blocks.contact-section",
         "blocks.technologies-section",
         "blocks.projects-section",
-        "blocks.hero-section"
+        "blocks.hero-section",
+        "blocks.testimonials-section"
       ]
     }
   }

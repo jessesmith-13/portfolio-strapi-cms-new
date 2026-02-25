@@ -7,6 +7,8 @@ export interface BlocksAboutSection extends Struct.ComponentSchema {
   };
   attributes: {
     aboutText: Schema.Attribute.Text;
+    aboutTextTwo: Schema.Attribute.Text;
+    focusItems: Schema.Attribute.Component<'elements.focusitem', true>;
     profileImage: Schema.Attribute.Media<'images' | 'files'>;
   };
 }
@@ -56,12 +58,33 @@ export interface BlocksTechnologiesSection extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksTestimonialsSection extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_testimonials_sections';
+  info: {
+    displayName: 'Testimonials Section';
+  };
+  attributes: {
+    testimonials: Schema.Attribute.Component<'elements.testimonial', true>;
+  };
+}
+
 export interface ElementsContactForm extends Struct.ComponentSchema {
   collectionName: 'components_elements_contact_forms';
   info: {
     displayName: 'contactForm';
   };
   attributes: {};
+}
+
+export interface ElementsFocusitem extends Struct.ComponentSchema {
+  collectionName: 'components_elements_focusitems';
+  info: {
+    displayName: 'focusitem';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+  };
 }
 
 export interface ElementsLink extends Struct.ComponentSchema {
@@ -156,6 +179,19 @@ export interface ElementsTechnologyCard extends Struct.ComponentSchema {
   };
 }
 
+export interface ElementsTestimonial extends Struct.ComponentSchema {
+  collectionName: 'components_elements_testimonials';
+  info: {
+    displayName: 'testimonial';
+  };
+  attributes: {
+    company: Schema.Attribute.String;
+    name: Schema.Attribute.String;
+    quote: Schema.Attribute.Text;
+    role: Schema.Attribute.String;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -224,7 +260,9 @@ declare module '@strapi/strapi' {
       'blocks.hero-section': BlocksHeroSection;
       'blocks.projects-section': BlocksProjectsSection;
       'blocks.technologies-section': BlocksTechnologiesSection;
+      'blocks.testimonials-section': BlocksTestimonialsSection;
       'elements.contact-form': ElementsContactForm;
+      'elements.focusitem': ElementsFocusitem;
       'elements.link': ElementsLink;
       'elements.logo': ElementsLogo;
       'elements.nav-link': ElementsNavLink;
@@ -233,6 +271,7 @@ declare module '@strapi/strapi' {
       'elements.subtext': ElementsSubtext;
       'elements.technology': ElementsTechnology;
       'elements.technology-card': ElementsTechnologyCard;
+      'elements.testimonial': ElementsTestimonial;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;

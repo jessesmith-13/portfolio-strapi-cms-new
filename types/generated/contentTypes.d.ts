@@ -561,6 +561,60 @@ export interface ApiContactContact extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiEstimateEstimate extends Struct.CollectionTypeSchema {
+  collectionName: 'estimates';
+  info: {
+    displayName: 'Estimate';
+    pluralName: 'estimates';
+    singularName: 'estimate';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    budgetRange: Schema.Attribute.Enumeration<
+      [
+        'under_2500',
+        'range_2500_5000',
+        'range_5000_10000',
+        'range_10000_20000',
+        'over_20000',
+      ]
+    > &
+      Schema.Attribute.Required;
+    company: Schema.Attribute.String;
+    contentReady: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    currentWebsiteUrl: Schema.Attribute.String;
+    designReady: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    features: Schema.Attribute.JSON;
+    goals: Schema.Attribute.Text & Schema.Attribute.Required;
+    idealLaunchDate: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::estimate.estimate'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    needsCMS: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    pageCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<1>;
+    projectType: Schema.Attribute.Enumeration<
+      ['landing', 'marketing', 'ecommerce', 'webapp', 'retainer']
+    > &
+      Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    screenCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<5>;
+    targetAudience: Schema.Attribute.Text & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFooterFooter extends Struct.SingleTypeSchema {
   collectionName: 'footers';
   info: {
@@ -1255,6 +1309,7 @@ declare module '@strapi/strapi' {
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
       'api::contact.contact': ApiContactContact;
+      'api::estimate.estimate': ApiEstimateEstimate;
       'api::footer.footer': ApiFooterFooter;
       'api::global.global': ApiGlobalGlobal;
       'api::header.header': ApiHeaderHeader;

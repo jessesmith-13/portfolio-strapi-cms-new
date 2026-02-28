@@ -1,0 +1,79 @@
+{
+  "kind": "collectionType",
+  "collectionName": "estimates",
+  "info": {
+    "singularName": "estimate",
+    "pluralName": "estimates",
+    "displayName": "Estimate"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "company": {
+      "type": "string"
+    },
+    "currentWebsiteUrl": {
+      "type": "string"
+    },
+    "targetAudience": {
+      "type": "text",
+      "required": true
+    },
+    "goals": {
+      "type": "text",
+      "required": true
+    },
+    "projectType": {
+      "type": "enumeration",
+      "enum": ["landing", "marketing", "ecommerce", "webapp", "retainer"],
+      "required": true
+    },
+    "pageCount": {
+      "type": "integer",
+      "default": 1
+    },
+    "screenCount": {
+      "type": "integer",
+      "default": 5
+    },
+    "contentReady": {
+      "type": "boolean",
+      "default": false
+    },
+    "designReady": {
+      "type": "boolean",
+      "default": false
+    },
+    "needsCMS": {
+      "type": "boolean",
+      "default": false
+    },
+    "features": {
+      "type": "json"
+    },
+    "budgetRange": {
+      "type": "enumeration",
+      "enum": [
+        "under_2500",
+        "range_2500_5000",
+        "range_5000_10000",
+        "range_10000_20000",
+        "over_20000"
+      ],
+      "required": true
+    },
+    "idealLaunchDate": {
+      "type": "date"
+    }
+  }
+}
